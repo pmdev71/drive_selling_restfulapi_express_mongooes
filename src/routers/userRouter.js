@@ -1,13 +1,41 @@
 const express = require('express');
 const router = new express.Router();
+const bcrypt = require('bcryptjs');
 const User = require('../models/users');
 
-// create new user
-router.post('/users', async (req, res) => {
+// create new user/ Registration
+router.post('/registration', async (req, res) => {
   try {
     const user = new User(req.body);
     const createUser = await user.save();
     res.status(201).send(createUser);
+  } catch (err) {
+    res.status(400).send(err);
+  }
+});
+
+// Login user
+router.post('/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      return res
+        .status(400)
+        .json({ error: 'Please, enter email and password.' });
+    }
+    const userLogin = await User.findOne({ email: email });
+    // console.log(userLogin);
+
+    if (userLogin) {
+      const isMatch = await bcrypt.compare(password, userLogin.password);
+      if (!isMatch) {
+        res.status(400).json({ error: 'Invalid Credential password.' });
+      } else {
+        res.status(200).json({ message: 'Successfully login' });
+      }
+    } else {
+      res.status(400).json({ error: 'Invalid Credential' });
+    }
   } catch (err) {
     res.status(400).send(err);
   }
