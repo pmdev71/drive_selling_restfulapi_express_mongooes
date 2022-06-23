@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 
-const pacageSchima = new mongoose.Schema(
+const pacageSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -25,6 +25,6 @@ const pacageSchima = new mongoose.Schema(
   }
 );
 
-const Package = new mongoose.model('Package', pacageSchima);
+const Package = new mongoose.model('Package', pacageSchema);
 
 module.exports = Package;
