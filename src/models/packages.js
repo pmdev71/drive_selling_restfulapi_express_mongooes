@@ -7,7 +7,11 @@ const pacageSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    price: {
+    regulaPrice: {
+      type: Number,
+      required: true,
+    },
+    discountPrice: {
       type: Number,
       required: true,
     },
@@ -16,6 +20,14 @@ const pacageSchema = new mongoose.Schema(
       required: true,
     },
     area: {
+      type: String,
+      required: true,
+    },
+    operatorImageThumb: {
+      type: String,
+      required: true,
+    },
+    operatorImageBanner: {
       type: String,
       required: true,
     },

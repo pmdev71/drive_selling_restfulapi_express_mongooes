@@ -1,3 +1,4 @@
+var cookieParser = require('cookie-parser');
 const express = require('express');
 require('./database/connect');
 const User = require('./models/users');
@@ -10,6 +11,7 @@ const orderRouter = require('./routers/orderRouter');
 const app = express();
 const port = process.env.PORT || 8080;
 
+app.use(cookieParser());
 app.use(express.json());
 app.use(userRouter);
 app.use(packageRouter);

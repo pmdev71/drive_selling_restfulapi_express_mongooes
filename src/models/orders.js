@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema(
   {
-    userName: {
+    userId: {
       type: String,
       required: true,
     },
@@ -10,12 +10,40 @@ const orderSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    userPhone: {
+    productId: {
+      type: String,
+      required: true,
+    },
+    productName: {
+      type: String,
+      required: true,
+    },
+    productDiscountPrice: {
       type: Number,
       required: true,
     },
-    paymentMethod: {
+    productRegularPrice: {
+      type: Number,
+      required: true,
+    },
+    productLocation: {
       type: String,
+      required: true,
+    },
+    productValidity: {
+      type: String,
+      required: true,
+    },
+    productOperator: {
+      type: String,
+      required: true,
+    },
+    productImage: {
+      type: String,
+      required: true,
+    },
+    receverPhone: {
+      type: Number,
       required: true,
     },
     paymentStatus: {
